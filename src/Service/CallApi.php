@@ -26,7 +26,7 @@ class CallApi
     //Function pour pour récupérer le code meteo et en fonction du résultat afficher l'icone correspondante
     public function getIcon(){
         $data  = $this->getWeather();
-        dd($data);
+        
         //J'affiche en fonction du resultat du weathercode l'image correspondante
         $weathercode = $data['daily']['weathercode'][0];
         // dd($weathercode);
