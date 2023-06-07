@@ -31,6 +31,9 @@ class Car
     #[ORM\ManyToOne(inversedBy: 'cars')]
     private ?CarCategory $CarCategory = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $image = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -97,6 +100,18 @@ class Car
     public function setCarCategory(?CarCategory $CarCategory): self
     {
         $this->CarCategory = $CarCategory;
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(string $image): self
+    {
+        $this->image = $image;
 
         return $this;
     }
