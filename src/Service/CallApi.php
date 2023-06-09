@@ -17,7 +17,7 @@ class CallApi
         //Jefais une requête GET pour interroger l'api avec l'url du site
         $response = $this->client->request(
             'GET',
-            'https://api.open-meteo.com/v1/forecast?latitude=48.85&longitude=2.35&current_weather=true&hourly=temperature_2m&daily=weathercode&timezone=Europe/Berlin&Weathermodels=GFS_Seamless'
+            'https://api.open-meteo.com/v1/forecast?latitude=48.85&longitude=2.35&current_weather=true&hourly=temperature_2m&hourly=weathercode&timezone=Europe/Berlin&Weathermodels=GFS_Seamless'
         );
         
         return $response->toArray();
@@ -28,11 +28,11 @@ class CallApi
         $data  = $this->getWeather();
         
         //J'affiche en fonction du resultat du weathercode l'image correspondante
-        $weathercode = $data['daily']['weathercode'][0];
-        // dd($weathercode);
+        $weathercode = $data['hourly']['weathercode'][0];
+        
         switch($weathercode){
                 case 0 : $weathercode =  'https://cdn-icons-png.flaticon.com/128/4814/4814268.png';break;
-                case 1|2|3 :$weathercode =  'https://cdn-icons-png.flaticon.com/128/1163/1163661.png';break;
+                case 1|2|3 : $weathercode =  'https://cdn-icons-png.flaticon.com/128/1163/1163661.png';break;
                 case 45|48:$weathercode =  'https://cdn-icons-png.flaticon.com/128/1163/1163624.png';break;
                 case 51|53|55|56|57|61|63|65|66|67: $weathercode =  'https://cdn-icons-png.flaticon.com/128/3262/3262912.png';break;
                 case 71|73|75|77|85|86: $weathercode =  'https://cdn-icons-png.flaticon.com/128/557/557706.png';break;
@@ -40,6 +40,7 @@ class CallApi
         }
         
         return $weathercode;
+        
 
     }
 }
