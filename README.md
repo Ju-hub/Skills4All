@@ -24,13 +24,16 @@ Quelques instructions afin de bien voir le projet.
     
     6.➡️  Exécuter la migration en base de données :
 
+            ⌨ php bin/console doctrine:migration:migrate
+            
+    7.➡️  Créer les fixtures
             ⌨ php bin/console doctrine:fixtures:load
 
-    7.➡️ Compiler les assets
+    8.➡️ Compiler les assets
 
             ⌨ npm run dev
 
-    8.➡️ Lancer le serveur en local
+    9.➡️ Lancer le serveur en local
 
             ⌨ symfony server:start 
 
